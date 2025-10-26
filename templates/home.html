@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FWI Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card shadow-lg p-4 rounded">
+            <h2 class="text-center mb-4">🔥 Forest Fire Weather Index Prediction 🔥</h2>
+            
+            <form action="{{ url_for('predict_datapoint') }}" method="post">
+                <div class="form-group">
+                    <label>Temperature</label>
+                    <input type="text" name="Temperature" placeholder="Temperature" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>RH (Relative Humidity)</label>
+                    <input type="text" name="RH" placeholder="RH" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Wind Speed (Ws)</label>
+                    <input type="text" name="Ws" placeholder="Ws" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Rain</label>
+                    <input type="text" name="Rain" placeholder="Rain" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>FFMC</label>
+                    <input type="text" name="FFMC" placeholder="FFMC" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>DMC</label>
+                    <input type="text" name="DMC" placeholder="DMC" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>ISI</label>
+                    <input type="text" name="ISI" placeholder="ISI" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Classes</label>
+                    <input type="text" name="Classes" placeholder="Classes" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Region</label>
+                    <input type="text" name="Region" placeholder="Region" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block btn-lg">Predict</button>
+            </form>
+
+            {% if result %}
+                <div class="alert alert-info text-center mt-4">
+                    <h4>The FWI prediction is: <strong>{{ result }}</strong></h4>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
